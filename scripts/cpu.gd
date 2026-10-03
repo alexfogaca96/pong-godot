@@ -1,9 +1,9 @@
 extends CharacterBody2D
 class_name CPU
 
-@export var acceleration: float = 5.8 # 4.0 easy # medium # 5.8 hard
-@export var cpu_velocity: float = 600.0
-@export var y_follow_ball_threshold: float = 50.0 
+@export var acceleration: float = 10 # 4.0 easy # medium # 5.8 hard
+@export var cpu_velocity: float = 400.0
+@export var y_follow_ball_threshold: float = 30.0 
 
 var ball: Ball
 

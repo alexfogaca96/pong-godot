@@ -32,19 +32,19 @@ size = Vector2(1, 1)
 process_mode = 1
 script = ExtResource("1_ibkli")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1934284343]
+[node name="Menu" type="CanvasLayer" parent="." unique_id=1934284343]
 process_mode = 3
 visible = false
 script = ExtResource("2_kiw3p")
 
-[node name="BackgroundPanel" type="Panel" parent="CanvasLayer" unique_id=791797329]
+[node name="BackgroundPanel" type="Panel" parent="Menu" unique_id=791797329]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/BackgroundPanel" unique_id=460298829]
+[node name="Panel" type="Panel" parent="Menu/BackgroundPanel" unique_id=460298829]
 custom_minimum_size = Vector2(350, 400)
 layout_mode = 1
 anchors_preset = 8
@@ -59,7 +59,7 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BackgroundPanel/Panel" unique_id=2125358155]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/BackgroundPanel/Panel" unique_id=2125358155]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -75,17 +75,17 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="Continue" type="Button" parent="CanvasLayer/BackgroundPanel/Panel/VBoxContainer" unique_id=778448755]
+[node name="Continue" type="Button" parent="Menu/BackgroundPanel/Panel/VBoxContainer" unique_id=778448755]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Continue"
 
-[node name="Restart" type="Button" parent="CanvasLayer/BackgroundPanel/Panel/VBoxContainer" unique_id=1421282328]
+[node name="Restart" type="Button" parent="Menu/BackgroundPanel/Panel/VBoxContainer" unique_id=1421282328]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Restart"
 
-[node name="Exit" type="Button" parent="CanvasLayer/BackgroundPanel/Panel/VBoxContainer" unique_id=1074475146]
+[node name="Exit" type="Button" parent="Menu/BackgroundPanel/Panel/VBoxContainer" unique_id=1074475146]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Exit"
@@ -152,16 +152,16 @@ shape = SubResource("RectangleShape2D_nbb3m")
 [node name="Sprite2D" type="Sprite2D" parent="BottomWall" unique_id=734498199]
 texture = SubResource("GradientTexture2D_nbb3m")
 
-[connection signal="cpu_score" from="." to="Score" method="_on_game_cpu_score"]
 [connection signal="cpu_score" from="." to="AudioStreamPlayer" method="_on_game_cpu_score"]
-[connection signal="game_start" from="." to="CPU" method="_on_game_start"]
+[connection signal="cpu_score" from="." to="Score" method="_on_game_cpu_score"]
 [connection signal="game_start" from="." to="AudioStreamPlayer" method="_on_game_start"]
-[connection signal="player_score" from="." to="Score" method="_on_game_player_score"]
+[connection signal="game_start" from="." to="CPU" method="_on_game_start"]
 [connection signal="player_score" from="." to="AudioStreamPlayer" method="_on_game_player_score"]
+[connection signal="player_score" from="." to="Score" method="_on_game_player_score"]
 [connection signal="reset_score" from="." to="Score" method="_on_game_reset_score"]
-[connection signal="game_restart" from="CanvasLayer" to="." method="_on_game_restart"]
-[connection signal="pressed" from="CanvasLayer/BackgroundPanel/Panel/VBoxContainer/Continue" to="CanvasLayer" method="_on_continue_pressed"]
-[connection signal="button_down" from="CanvasLayer/BackgroundPanel/Panel/VBoxContainer/Restart" to="CanvasLayer" method="_on_restart_button_down"]
-[connection signal="button_down" from="CanvasLayer/BackgroundPanel/Panel/VBoxContainer/Exit" to="CanvasLayer" method="_on_exit_button_down"]
+[connection signal="game_restart" from="Menu" to="." method="_on_game_restart"]
+[connection signal="pressed" from="Menu/BackgroundPanel/Panel/VBoxContainer/Continue" to="Menu" method="_on_continue_pressed"]
+[connection signal="button_down" from="Menu/BackgroundPanel/Panel/VBoxContainer/Restart" to="Menu" method="_on_restart_button_down"]
+[connection signal="button_down" from="Menu/BackgroundPanel/Panel/VBoxContainer/Exit" to="Menu" method="_on_exit_button_down"]
 [connection signal="ball_destroyed" from="RightWall" to="." method="_on_right_wall_ball_destroyed"]
 [connection signal="ball_destroyed" from="LeftWall" to="." method="_on_left_wall_ball_destroyed"]
