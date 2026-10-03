@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dro4x5wccqjap"]
+
+[ext_resource type="Script" uid="uid://dggiacgw2nv5e" path="res://scripts/side_wall.gd" id="1_x2pt4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbb3m"]
+size = Vector2(1, 1)
+
+[node name="SideWall" type="Area2D" unique_id=1769414359]
+scale = Vector2(100, 1080)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_x2pt4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=582960425]
+shape = SubResource("RectangleShape2D_nbb3m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

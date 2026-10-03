@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://dtchwqlmtjm83"]
+
+[ext_resource type="Script" uid="uid://bopbtgtcqblvg" path="res://scripts/game.gd" id="1_ibkli"]
+[ext_resource type="PackedScene" uid="uid://dro4x5wccqjap" path="res://scenes/SideWall.tscn" id="2_78awf"]
+[ext_resource type="Script" uid="uid://ci2ho5s1c7kpg" path="res://scripts/audio_stream_player.gd" id="2_aug50"]
+[ext_resource type="PackedScene" uid="uid://dmuastbqix7m5" path="res://scenes/CPU.tscn" id="2_cpr0p"]
+[ext_resource type="Script" uid="uid://wxe7mt5xdlog" path="res://scripts/menu.gd" id="2_kiw3p"]
+[ext_resource type="Script" uid="uid://prnu7r0rrifp" path="res://scripts/score.gd" id="2_s0nni"]
+[ext_resource type="PackedScene" uid="uid://cv6r2wbfv4e8f" path="res://scenes/Player.tscn" id="3_78awf"]
+
+[sub_resource type="Gradient" id="Gradient_6ubv3"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nbb3m"]
+gradient = SubResource("Gradient_6ubv3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w40ks"]
+size = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_cpr0p"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nbb3m"]
+gradient = SubResource("Gradient_cpr0p")
+width = 1
+height = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbb3m"]
+size = Vector2(1, 1)
+
+[node name="Game" type="Node" unique_id=1964271802]
+process_mode = 1
+script = ExtResource("1_ibkli")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1934284343]
+process_mode = 3
+visible = false
+script = ExtResource("2_kiw3p")
+
+[node name="BackgroundPanel" type="Panel" parent="CanvasLayer" unique_id=791797329]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/BackgroundPanel" unique_id=460298829]
+custom_minimum_size = Vector2(350, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -200.0
+offset_right = 175.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BackgroundPanel/Panel" unique_id=2125358155]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -50.5
+offset_right = 39.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Continue" type="Button" parent="CanvasLayer/BackgroundPanel/Panel/VBoxContainer" unique_id=778448755]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Continue"
+
+[node name="Restart" type="Button" parent="CanvasLayer/BackgroundPanel/Panel/VBoxContainer" unique_id=1421282328]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Restart"
+
+[node name="Exit" type="Button" parent="CanvasLayer/BackgroundPanel/Panel/VBoxContainer" unique_id=1074475146]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=149266396]
+script = ExtResource("2_aug50")
+
+[node name="Background" type="TextureRect" parent="." unique_id=68392379]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_nbb3m")
+
+[node name="Score" type="Label" parent="." unique_id=470653666]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_top = 100.0
+offset_right = 66.0
+offset_bottom = 188.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+script = ExtResource("2_s0nni")
+
+[node name="RightWall" parent="." unique_id=1769414359 instance=ExtResource("2_78awf")]
+position = Vector2(2070, 540)
+scale = Vector2(100, 5000)
+
+[node name="LeftWall" parent="." unique_id=1614990505 instance=ExtResource("2_78awf")]
+position = Vector2(-150, 540)
+scale = Vector2(100, 5000)
+
+[node name="CPU" parent="." unique_id=456541684 instance=ExtResource("2_cpr0p")]
+position = Vector2(1620, 540)
+
+[node name="Player" parent="." unique_id=154235588 instance=ExtResource("3_78awf")]
+position = Vector2(300, 540)
+
+[node name="TopWall" type="StaticBody2D" parent="." unique_id=1091842753]
+position = Vector2(960, -50)
+scale = Vector2(1920, 100)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall" unique_id=165304733]
+shape = SubResource("RectangleShape2D_w40ks")
+
+[node name="Sprite2D" type="Sprite2D" parent="TopWall" unique_id=2046278905]
+texture = SubResource("GradientTexture2D_nbb3m")
+
+[node name="BottomWall" type="StaticBody2D" parent="." unique_id=877695497]
+position = Vector2(960, 1130)
+scale = Vector2(1920, 100)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall" unique_id=1910258845]
+shape = SubResource("RectangleShape2D_nbb3m")
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomWall" unique_id=734498199]
+texture = SubResource("GradientTexture2D_nbb3m")
+
+[connection signal="cpu_score" from="." to="Score" method="_on_game_cpu_score"]
+[connection signal="cpu_score" from="." to="AudioStreamPlayer" method="_on_game_cpu_score"]
+[connection signal="game_start" from="." to="CPU" method="_on_game_start"]
+[connection signal="game_start" from="." to="AudioStreamPlayer" method="_on_game_start"]
+[connection signal="player_score" from="." to="Score" method="_on_game_player_score"]
+[connection signal="player_score" from="." to="AudioStreamPlayer" method="_on_game_player_score"]
+[connection signal="reset_score" from="." to="Score" method="_on_game_reset_score"]
+[connection signal="game_restart" from="CanvasLayer" to="." method="_on_game_restart"]
+[connection signal="pressed" from="CanvasLayer/BackgroundPanel/Panel/VBoxContainer/Continue" to="CanvasLayer" method="_on_continue_pressed"]
+[connection signal="button_down" from="CanvasLayer/BackgroundPanel/Panel/VBoxContainer/Restart" to="CanvasLayer" method="_on_restart_button_down"]
+[connection signal="button_down" from="CanvasLayer/BackgroundPanel/Panel/VBoxContainer/Exit" to="CanvasLayer" method="_on_exit_button_down"]
+[connection signal="ball_destroyed" from="RightWall" to="." method="_on_right_wall_ball_destroyed"]
+[connection signal="ball_destroyed" from="LeftWall" to="." method="_on_left_wall_ball_destroyed"]

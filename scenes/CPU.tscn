@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dmuastbqix7m5"]
+
+[ext_resource type="Script" uid="uid://d28snfjommkwo" path="res://scripts/cpu.gd" id="1_kwun5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbb3m"]
+size = Vector2(20, 150)
+
+[sub_resource type="Gradient" id="Gradient_rjhxm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_355tp"]
+gradient = SubResource("Gradient_rjhxm")
+width = 1
+
+[node name="CPU" type="CharacterBody2D" unique_id=1287948404]
+collision_layer = 2
+collision_mask = 12
+motion_mode = 1
+script = ExtResource("1_kwun5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=432426703]
+shape = SubResource("RectangleShape2D_nbb3m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1443924895]
+scale = Vector2(20, 150)
+texture = SubResource("GradientTexture1D_355tp")
