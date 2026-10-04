@@ -7,7 +7,7 @@ signal collided
 @export var max_speed: float = 1500.0
 @export var angle_steepness_factor: float = 20.0
 
-var bounces: int = 0
+var bounces: int = 1
 
 func _ready() -> void:
 	velocity = Vector2(-speed, randf_range(-100.0, 100.0))
