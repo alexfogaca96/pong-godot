@@ -78,16 +78,34 @@ alignment = 1
 [node name="Continue" type="Button" parent="Menu/BackgroundPanel/Panel/VBoxContainer" unique_id=778448755]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Exit")
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_right = NodePath("../Restart")
+focus_neighbor_bottom = NodePath("../Restart")
+focus_next = NodePath("../Restart")
+focus_previous = NodePath("../Exit")
 text = "Continue"
 
 [node name="Restart" type="Button" parent="Menu/BackgroundPanel/Panel/VBoxContainer" unique_id=1421282328]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Continue")
+focus_neighbor_top = NodePath("../Continue")
+focus_neighbor_right = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../Continue")
 text = "Restart"
 
 [node name="Exit" type="Button" parent="Menu/BackgroundPanel/Panel/VBoxContainer" unique_id=1074475146]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../Restart")
+focus_neighbor_top = NodePath("../Restart")
+focus_neighbor_right = NodePath("../Continue")
+focus_neighbor_bottom = NodePath("../Continue")
+focus_next = NodePath("../Continue")
+focus_previous = NodePath("../Restart")
 text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=149266396]

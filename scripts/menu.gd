@@ -9,6 +9,8 @@ func _input(_event: InputEvent) -> void:
 func _pause(pause: bool) -> void:
 	get_tree().paused = pause
 	show() if pause else hide()
+	if pause:
+		$BackgroundPanel/Panel/VBoxContainer/Continue.grab_focus.call_deferred()
 
 func _on_continue_pressed() -> void:
 	_pause(false)
